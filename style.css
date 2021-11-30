@@ -1,0 +1,15 @@
+:root {
+    --bg-color: black;
+    --main-color: #ffa500;
+    --main-color-transparent: rgba(255, 166, 0, 0.459);
+    --header-font-family: 'Creepster', cursive;
+  }
+
+.modal-content {
+    background-color: black;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 1em;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }

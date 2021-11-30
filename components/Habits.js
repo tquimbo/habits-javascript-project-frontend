@@ -9,7 +9,7 @@ class Habit{
     renderCard = () => {
         const { description, plus, minus,  level, color, id } = this.data
         document.getElementById("habit-container").innerHTML += `
-        <div class="house-card card" data-id=${id}> 
+        <div class="habit-card card" data-id=${id}> 
         <p class="title">${description}</p>
         </div>`
     }
@@ -29,6 +29,24 @@ class Habit{
           this.renderIndex()
         })
       }
+
+
+  static handleSubmit = (e) => {
+    e.preventDefault()
+    const newHabit = {
+      description: e.target.name.value,
+      plus: e.target.plus.value,
+      minus: e.target.minus.value,
+      minus: e.target.minus.value,
+      color: e.color.haunting.value,
+    }
+    api.createHabit(newHabit).then(habit => {
+      new Habit(habit).renderCard()
+    })
+    modal.close()
+    e.target.reset()
+  }
+
     
 
 }

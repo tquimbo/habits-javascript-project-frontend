@@ -1,5 +1,7 @@
 class Habit{
 
+    static all = []
+
     constructor(data){
         this.data = data
     }
@@ -37,11 +39,11 @@ class Habit{
       description: e.target.name.value,
       plus: e.target.plus.value,
       minus: e.target.minus.value,
-      minus: e.target.minus.value,
-      color: e.color.haunting.value,
+      level: e.target.level.value,
+      color: e.target.color.value,
     }
     api.createHabit(newHabit).then(habit => {
-      new Habit(habit).renderCard()
+      new House(habit).renderCard()
     })
     modal.close()
     e.target.reset()

@@ -6,21 +6,26 @@ class Habit{
 
     static find = (id) => this.all.find(habit => habit.data.id == id)
 
-
-    static addHabit(habit){
-        new Habit(habit)
+    renderCard = () => {
+        const { description, plus, minus,  level, color, id } = this.data
+        document.getElementById("habit-container").innerHTML += `
+        <div class="house-card card" data-id=${id}> 
+        <p class="title">${description}</p>
+        </div>`
     }
+
 
     static renderIndex = () => {
         const habitContainer = document.createElement("div")
         habitContainer.classList.add("container")
-        document.getElementById("main".appendChild(habitContainer))
+        document.getElementById("main").appendChild(habitContainer)
+        this.all.forEach(habit => habit.renderCard)
     }
     
     static getHabits = () => {
         api.getHabits().then(habits => {
           Habit.all = []
-          habits.forEach(habit => Habit.add(habit))
+          habits.forEach(habit => new Habit(habit))
           this.renderIndex()
         })
       }

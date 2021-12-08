@@ -1,4 +1,4 @@
-class Song{
+class Task{
     constructor(data){
         this.id = data.id
         this.name = data.name

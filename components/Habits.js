@@ -8,6 +8,9 @@ class Habit{
 
     static find = (id) => this.all.find(habit => habit.data.id == id)
 
+
+    addHabit = () => .addEventListener
+
     renderCard = () => {
         const { description, plus, minus,  level, color, id } = this.data
         document.getElementById("habit-container").innerHTML += `
@@ -16,11 +19,25 @@ class Habit{
         </div>`
     }
 
+    renderShow = () => {
+      const { description, plus, minus, level, color} = this.data
+      document.getElementById("main").innerHTML = `
+      <div class="show">
+        <h1>${description}</h1>
+        <p>${plus}</p>
+        <p>${minus}</p>
+        <div class="container"></div>
+      </div>
+      <button id="goBack">Go Back</button>
+      `
+      document.getElementById("goBack").addEventListener("click", Habit.renderIndex)
+      this.apartments.forEach(apartment => apartment.render())
+    }
 
     static renderIndex = () => {
         const habitContainer = document.createElement("div")
         habitContainer.classList.add("container")
-        document.getElementById("main").appendChild(habitContainer)
+        document.getElementById("habit").appendChild(habitContainer)
         this.all.forEach(habit => habit.renderCard)
     }
     
@@ -49,6 +66,5 @@ class Habit{
     e.target.reset()
   }
 
-    
 
 }

@@ -20,6 +20,14 @@
     padding: 20px;
   }
 
+  .show > {
+    font-size: 1.25em;
+    font-family: var(--header-font-family);
+    color: red;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
 
   #habit-container {
     background: #f9f9f9;

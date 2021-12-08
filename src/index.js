@@ -15,3 +15,16 @@ createHabit = (newHabit) => {
     })
     .then(response => response.json())
   }
+
+  findOrCreateUser = (username) => {
+    return fetch(this.api + "/users", {
+      method: 'POST', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({username: username}),
+    })
+    .then(response => response.json())
+  }
+
+}

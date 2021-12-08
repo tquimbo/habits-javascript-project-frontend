@@ -8,8 +8,13 @@ class Habit{
 
     static find = (id) => this.all.find(habit => habit.data.id == id)
 
+    submitHabit = () => {document.getElementById("habit-description").addEventListener("click", addContainer){
 
-    submitHabit = () => document.getElementById("habit").addEventListener("click", addContainer)
+    }}
+
+    addHabits = () => {
+      const habitInput = document.querySelector('habit-description').value;
+    }
 
     renderCard = () => {
         const { description, plus, minus,  level, color, id } = this.data

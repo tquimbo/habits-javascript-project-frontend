@@ -30,12 +30,16 @@ function getSkills() {
 function skillFormHanlder(e) {
     e.preventDefault()
 
-  const nameInput = document.querySelector('#s-name').value;
+  const nameInput = document.querySelector('#name-input').value
+  const imageInput = document.querySelector('#image-input').value
+  const levelInput = document.querySelector('#level-input').value
+
+  postSkill(nameInput, imageInput, levelInput) 
 
 }
 
-function postSkill(name, image_url, experience, level, user_id) {
-    const bodyData = {name, image_url, experience, level, user_id}
+function postSkill(nameInput, imageInput, levelInput) {
+    const bodyData = {nameInput, imageInput, levelInput}
   
     fetch(skills_url, {
       method: "POST",

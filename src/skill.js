@@ -6,8 +6,8 @@ class Skill{
   constructor(skill, skillAttributes) {
     this.id = skill.id
     this.name = skillAttributes.name
-    this.level = skillAttributes.level
     this.image_url = skillAttributes.image_url
+    this.level = skillAttributes.level
     this.experience = skillAttributes.experience
     Skill.all.push(this)
     console.log(this);

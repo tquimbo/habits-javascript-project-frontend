@@ -5,12 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/style.css">
-    <script src="./src/services/ApiService.js"></script>
     <script src="./src/components/Habits.js"></script>
     <script src="./src/components/Users.js"></script>
-    <script src="./src/components/Skills.js"></script>
     <script src="./src/components/Tasks.js"></script>
-    <script defer src="./src/index.js"></script>
+    <script src="./src/skill.js"></script>
+    <script src="src/index.js" charset="utf-8"></script>
     <title>Skills Tracker</title>
 </head>
 <body>
@@ -20,7 +19,7 @@
         <input type="text" id="username" name="username">
         <input type="submit" value="Submit">
     </form>
-    <form>
+    <form id="create-skill-form">
         <div class="form-group">
             <label for="name-input"><p>Skill Name</p></label>
             <input type="text" class="form-control" value = "" id="name-input">

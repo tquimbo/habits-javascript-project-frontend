@@ -1,67 +1,51 @@
 const endPoint = "http://localhost:3000/api/v1/skills"
 
 
-
-
-// getSkill = () => fetch(this.api + "/skill").then(res => res.json())
-
-// createSkill = (newSkill) => {
-//     newSkill.user_id = user.id
-//     return fetch(this.api + "/skills", {
-//       method: 'POST', // or 'PUT'
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify(newSkill),
-//     })
-//     .then(response => response.json())
-//   }
-
-//   findOrCreateUser = (username) => {
-//     return fetch(this.api + "/users", {
-//       method: 'POST', // or 'PUT'
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify({username: username}),
-//     })
-//     .then(response => response.json())
-//   }
-
-// }
-
 document.addEventListener('DOMContentLoaded', () => {
   getSkill()
-}
+ 
+
+  const createSkillForm = document.querySelector("#create-skill-form")
+  createSkillForm.addEventListener("submit", (e) => skillFormHandler(e))
+
+});
+// document.addEventListener('DOMContentLoaded', () => {
+//   alert('LOADED');
+// });
 
 function getSkill() {
   fetch(endPoint)
   .then(response => response.json())
   .then(skill => {
     skill.data.forEach(skill => {
-      const newSkill = new Skill(skill, skill.attributes)
+      let newSkill = new Skill(skill, skill.attributes)
     
-      document.querySelector('#skill-container').innerHTML += skillMarkup
+      document.querySelector('#skill-container').innerHTML += newSkill.renderNewCard()
     })
   })
 }
 
+// function getSyllabi() {
+//   fetch(endPoint)
+//     .then(res => res.json())
+//     .then(json => console.log(json));
+// }
 
-function createFormHandler(e) {
+function skillFormHandler(e) {
   e.preventDefault()
 
-  const skillInput = document.querySelector('#skill-name').value;
-  const skillInput = document.querySelector('#skill-name').value;
-  const skillInput = document.querySelector('#skill-name').value;
-  const skillInput = document.querySelector('#skill-name').value;
+const nameInput = document.querySelector('#name-input').value;
+const imageInput = document.querySelector('#image-input').value;
+const levelInput = document.querySelector('#level-input').value;
+postSkill(nameInput, imageInput, levelInput) 
 
-  postSkill(skillInput)
 }
 
-function postSkill(name, image_url, experience, level, user_id) {
-  const bodyData = {name, image_url, experience, level, user_id}
 
-  fetch(skills_url, {
+function postSkill(name, image_url, level) {
+  const bodyData = {name, image_url, level}
+
+  fetch(endPoint, {
     method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify(bodyData)
@@ -76,10 +60,10 @@ function postSkill(name, image_url, experience, level, user_id) {
     const newSkill = new Skill(skillData, skillData.attributes)
     console.log(newSkill)
 
-    document.querySelector('#skill-container').innerHTML += Skill.render()
+    document.querySelector('#skill-container').innerHTML += newSkill.render()
 
     createSkillForm.reset();
     slowScroll()
   })
 }
-    
+

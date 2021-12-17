@@ -1,4 +1,5 @@
-const skills_url = //localhost:8000/skills
+const skills_url = //localhost:3000/api/v1/skills
+
 
 class Skill{
 
@@ -14,26 +15,90 @@ class Skill{
         
     }
 
-
-function getRooftops() {
+function getSkills() {
         fetch(skills_url)
         .then(response => response.json())
         .then(skills => {
             skills.data.forEach(skill => {
-            const newSkill = new Rooftop(skill, skill.attributes)
+            const newSkill = new Skill(skill, skill.attributes)
       
             document.querySelector('#skill-container').innerHTML += newSkill.render()
           })
         }) 
-      }
+      }      
 
-function postRooftops() {
-    
+function skillFormHanlder(e) {
+    e.preventDefault()
+
+  const nameInput = document.querySelector('#s-name').value;
+
 }
-      
 
+function postSkill(name, image_url, experience, level, user_id) {
+    const bodyData = {name, image_url, experience, level, user_id}
+  
+    fetch(skills_url, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(bodyData)
+    })
+    .then(response => response.json())
+    .then(skill => {
+      console.log(skill);
+  
+      const skillData = skill.data
+      console.log(skillData)
+  
+      const newSkill = new Skill(skillData, skillData.attributes)
+      console.log(newSkill)
+  
+      document.querySelector('#skill-container').innerHTML += Skill.render()
+  
+      createSkillForm.reset();
+      slowScroll()
+    })
+  }
+      
+}
+
+function createFormHandler(e) {
+  e.preventDefault()
+
+  const skillInput = document.querySelector('#skill-name').value;
 
  
 
-
+  postSkill(skillInput)
 }
+
+
+function postSkill(name, image_url, experience, level, user_id) {
+  const bodyData = {name, image_url, experience, level, user_id}
+
+  fetch(skills_url, {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(bodyData)
+  })
+  .then(response => response.json())
+  .then(skill => {
+    console.log(skill);
+
+    const skillData = skill.data
+    console.log(skillData)
+
+    const newSkill = new Skill(skillData, skillData.attributes)
+    console.log(newSkill)
+
+    document.querySelector('#skill-container').innerHTML += Skill.render()
+
+    createSkillForm.reset();
+    slowScroll()
+  })
+}
+    
+}
+
+
+
+

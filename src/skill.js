@@ -1,15 +1,12 @@
-const skills_url = //localhost:3000/api/v1/skills
-
-
 class Skill{
   constructor(skill, skillAttributes) {
-    this.id = skill.id
+    this.id = skill.id;
+    debugger
     this.name = skillAttributes.name;
     this.image_url = skillAttributes.image_url;
     this.level = skillAttributes.level;
     this.experience = skillAttributes.experience;
-    Skill.all.push(this)
-    console.log(this);
+    Skill.all.push(this);
   }
 
 
@@ -42,12 +39,12 @@ class Skill{
             <br><br>`;
   }
 
+
+  static findById(id) {
+    return this.all.find(skill => skill.id === id);
+  }
+
 }
 
 
-
-
-
-
-
-// Skill.all = [];
+Skill.all = [];

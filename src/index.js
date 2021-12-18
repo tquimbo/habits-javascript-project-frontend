@@ -13,38 +13,38 @@ document.addEventListener('DOMContentLoaded', () => {
 //   alert('LOADED');
 // });
 
-// function getSkill() {
-//   fetch(endPoint)
-//   .then(response => response.json())
-//   .then(skill => {
-//     skill.data.forEach(skill => {
-//       console.log(skill);
-
-//       let newSkill = new Skill(skill, skill.attributes)
-    
-//       document.querySelector('#skill-container').innerHTML += newSkill.renderSkillCard()
-//     })
-//   })
-// }
-
-
 function getSkill() {
   fetch(endPoint)
   .then(response => response.json())
   .then(skill => {
     skill.data.forEach(skill => {
+      // console.log(skill);
 
-      const skillMarkup = `
-          <div data-id=${skill.id}
-            <h3>${skill.attributes.name}</h3>
-          </div>
-          <br><br>`;
-
+      const newSkill = new Skill(skill.id, skill.attributes)
     
-      document.querySelector('#skill-container').innerHTML += skillMarkup
+      document.querySelector('#skill-container').innerHTML += newSkill.renderSkillCard()
     })
   })
 }
+
+
+// function getSkill() {
+//   fetch(endPoint)
+//   .then(response => response.json())
+//   .then(skill => {
+//     skill.data.forEach(skill => {
+
+//       const skillMarkup = `
+//           <div data-id=${skill.id}
+//             <h3>${skill.attributes.name}</h3>
+//           </div>
+//           <br><br>`;
+
+    
+//       document.querySelector('#skill-container').innerHTML += skillMarkup
+//     })
+//   })
+// }
 
 function skillFormHandler(e) {
   e.preventDefault()
@@ -81,6 +81,32 @@ postSkill(nameInput, imageInput, levelInput)
 //     slowScroll()
 //   }
 
+// function postSkill(name, image_url, level) {
+//   const bodyData = {name, image_url, level}
+
+//   fetch(endPoint, {
+//     method: "POST",
+//     headers: {"Content-Type": "application/json"},
+//     body: JSON.stringify(bodyData)
+//   })
+//   .then(response => response.json())
+//   .then(skill => {
+//     console.log(skill);
+//     const skillData = skill.data
+    
+//     const skillMarkup = `
+//     <div data-id=${skill.id}>
+//       <img src=${skillData.attributes.image_url} height="200" width="250">
+//       <h3>${skillData.attributes.name}</h3>
+//       <p>${skillData.attributes.level}</p>
+//       </div>
+//       <br><br>`;
+
+
+//     document.querySelector('#skill-container').innerHTML += skillMarkup
+    
+//   })
+
 function postSkill(name, image_url, level) {
   const bodyData = {name, image_url, level}
 
@@ -91,21 +117,13 @@ function postSkill(name, image_url, level) {
   })
   .then(response => response.json())
   .then(skill => {
-    console.log(skill);
-    const skillData = skill.data
-    
-    const skillMarkup = `
-    <div data-id=${skill.id}>
-      <img src=${skillData.attributes.image_url} height="200" width="250">
-      <h3>${skillData.attributes.name}</h3>
-      <p>${skillData.attributes.level}</p>
-      </div>
-      <br><br>`;
 
+    const newSkill = new Skill(skill.data.id, skill.data.attributes)
+    document.querySelector('#skill-container').innerHTML += newSkill.renderSkillCard();
 
-    document.querySelector('#skill-container').innerHTML += skillMarkup
-    
   })
-  
 }
+
+
+
 

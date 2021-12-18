@@ -28,13 +28,12 @@ function skillFormHandler(e) {
 
 const nameInput = document.querySelector('#name-input').value;
 const imageInput = document.querySelector('#image-input').value;
-const levelInput = document.querySelector('#level-input').value;
-postSkill(nameInput, imageInput, levelInput) 
+postSkill(nameInput, imageInput) 
 
 }
 
-function postSkill(name, image_url, level) {
-  const bodyData = {name, image_url, level}
+function postSkill(name, image_url) {
+  const bodyData = {name, image_url}
 
   fetch(endPoint, {
     method: "POST",
@@ -46,6 +45,45 @@ function postSkill(name, image_url, level) {
 
     const newSkill = new Skill(skill.data.id, skill.data.attributes)
     document.querySelector('#skill-container').innerHTML += newSkill.renderSkillCard();
+
+  })
+}
+
+function getTask() {
+  fetch(endPoint)
+  .then(response => response.json())
+  .then(task => {
+    task.data.forEach(skill => {
+
+      const newTask = new Task(task.id, task.attributes)
+    
+      document.querySelector('#task-container').innerHTML += newTask.renderTaskCard()
+    })
+  })
+}
+
+function taskFormHandler(e) {
+  e.preventDefault()
+
+const descriptionInput = document.querySelector('#description-input').value;
+const experienceInput = document.querySelector('#experience-input').value;
+postSkill(descriptionInput, experienceInput) 
+
+}
+
+function postTask(description, experience) {
+  const bodyData = {description, experience}
+
+  fetch(endPoint, {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(bodyData)
+  })
+  .then(response => response.json())
+  .then(skill => {
+
+    const newTask = new Task(task.data.id, task.data.attributes)
+    document.querySelector('#task-container').innerHTML += newTask.renderTaskCard();
 
   })
 }

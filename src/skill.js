@@ -1,7 +1,6 @@
 class Skill{
   constructor(skill, skillAttributes) {
     this.id = skill.id;
-    debugger
     this.name = skillAttributes.name;
     this.image_url = skillAttributes.image_url;
     this.level = skillAttributes.level;
@@ -32,9 +31,9 @@ class Skill{
   renderSkillCard() {
     return `
             <div data-id=${this.id}>
-              <img src=${this.image_url} height="200" width="250">
-              <h3>${this.name}</h3>
-              <p>${this.level}</p>
+              <h2>${this.name}</h2> 
+              <img src=${this.image_url} height="100" width="150">
+              <button id="myBtn">Add Task</button>
             </div>
             <br><br>`;
   }

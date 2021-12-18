@@ -7,7 +7,7 @@ class Task{
     }
 
     static findById(id) {
-        return this.all.find(skill => skill.id === id);
+        return this.all.find(task => task.id === id);
       }
     
     

@@ -50,4 +50,4 @@ class Skill{
 
 
 
-Skill.all = [];
+// Skill.all = [];

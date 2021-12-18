@@ -13,25 +13,38 @@ document.addEventListener('DOMContentLoaded', () => {
 //   alert('LOADED');
 // });
 
+// function getSkill() {
+//   fetch(endPoint)
+//   .then(response => response.json())
+//   .then(skill => {
+//     skill.data.forEach(skill => {
+//       console.log(skill);
+
+//       let newSkill = new Skill(skill, skill.attributes)
+    
+//       document.querySelector('#skill-container').innerHTML += newSkill.renderSkillCard()
+//     })
+//   })
+// }
+
+
 function getSkill() {
   fetch(endPoint)
   .then(response => response.json())
   .then(skill => {
     skill.data.forEach(skill => {
-      console.log(skill);
 
-      let newSkill = new Skill(skill, skill.attributes)
+      const skillMarkup = `
+          <div data-id=${skill.id}
+            <h3>${skill.attributes.name}</h3>
+          </div>
+          <br><br>`;
+
     
-      document.querySelector('#skill-container').innerHTML += newSkill.renderSkillCard()
+      document.querySelector('#skill-container').innerHTML += skillMarkup
     })
   })
 }
-
-// function getSyllabi() {
-//   fetch(endPoint)
-//     .then(res => res.json())
-//     .then(json => console.log(json));
-// }
 
 function skillFormHandler(e) {
   e.preventDefault()

@@ -9,8 +9,16 @@ class Task{
     static findById(id) {
         return this.all.find(task => task.id === id);
       }
-    
+
+      renderTaskCard() {
+        return `
+                <div data-id=${this.id}>
+                  <h2>${this.description}</h2> 
+
+                </div>
+                <br><br>`;
+      }
     
 }
 
-Task.all
+Task.all = []

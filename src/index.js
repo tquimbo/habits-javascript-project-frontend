@@ -8,6 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const createSkillForm = document.querySelector("#create-skill-form")
   createSkillForm.addEventListener("submit", (e) => skillFormHandler(e))
 
+  const createTaskForm = document.querySelector("#create-task-form")
+  createTaskForm.addEventListener("submit", (e) => taskFormHandler(e))
+
+  const submitTaskDescription = document.querySelector("#create-task-form")
+  submitTaskDescription.addEventListener("submit", (e) => taskFormHandler(e))
+
 });
 
 function getSkill() {
@@ -53,7 +59,7 @@ function getTask() {
   fetch(endPoint)
   .then(response => response.json())
   .then(task => {
-    task.data.forEach(skill => {
+    task.data.forEach(task => {
 
       const newTask = new Task(task.id, task.attributes)
     
@@ -66,13 +72,12 @@ function taskFormHandler(e) {
   e.preventDefault()
 
 const descriptionInput = document.querySelector('#description-input').value;
-const experienceInput = document.querySelector('#experience-input').value;
-postSkill(descriptionInput, experienceInput) 
+postTask(descriptionInput) 
 
 }
 
-function postTask(description, experience) {
-  const bodyData = {description, experience}
+function postTask(description) {
+  const bodyData = {description}
 
   fetch(endPoint, {
     method: "POST",
@@ -80,7 +85,7 @@ function postTask(description, experience) {
     body: JSON.stringify(bodyData)
   })
   .then(response => response.json())
-  .then(skill => {
+  .then(task => {
 
     const newTask = new Task(task.data.id, task.data.attributes)
     document.querySelector('#task-container').innerHTML += newTask.renderTaskCard();

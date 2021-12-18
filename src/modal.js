@@ -1,5 +1,3 @@
-
-   
 class Modal {
 
     constructor(){
@@ -29,6 +27,5 @@ class Modal {
         }
       })
     }
-  
   
   }

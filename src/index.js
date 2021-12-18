@@ -57,6 +57,30 @@ postSkill(nameInput, imageInput, levelInput)
 }
 
 
+// function postSkill(name, image_url, level) {
+//   const bodyData = {name, image_url, level}
+
+//   fetch(endPoint, {
+//     method: "POST",
+//     headers: {"Content-Type": "application/json"},
+//     body: JSON.stringify(bodyData)
+//   })
+//   .then(response => response.json())
+//   .then(skill => {
+//     console.log(skill);
+
+//     const skillData = skill.data
+//     console.log(skillData)
+
+//     const newSkill = new Skill(skillData, skillData.attributes)
+//     console.log(newSkill)
+
+//     document.querySelector('#skill-container').innerHTML += newSkill.render()
+
+//     createSkillForm.reset();
+//     slowScroll()
+//   }
+
 function postSkill(name, image_url, level) {
   const bodyData = {name, image_url, level}
 
@@ -68,17 +92,20 @@ function postSkill(name, image_url, level) {
   .then(response => response.json())
   .then(skill => {
     console.log(skill);
-
     const skillData = skill.data
-    console.log(skillData)
+    
+    const skillMarkup = `
+    <div data-id=${skill.id}>
+      <img src=${skillData.attributes.image_url} height="200" width="250">
+      <h3>${skillData.attributes.name}</h3>
+      <p>${skillData.attributes.level}</p>
+      </div>
+      <br><br>`;
 
-    const newSkill = new Skill(skillData, skillData.attributes)
-    console.log(newSkill)
 
-    document.querySelector('#skill-container').innerHTML += newSkill.render()
-
-    createSkillForm.reset();
-    slowScroll()
+    document.querySelector('#skill-container').innerHTML += skillMarkup
+    
   })
+  
 }
 

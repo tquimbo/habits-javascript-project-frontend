@@ -9,17 +9,12 @@
     <script src="./src/components/Habits.js"></script>
     <script src="./src/components/Users.js"></script>
     <script src="./src/components/Tasks.js"></script>
-    <script src="src/skill.js"></script>
+    <script src="./src/skill.js"></script>
     <script src="src/index.js" charset="utf-8"></script>
     <title>Skills Tracker</title>
 </head>
 <body>
     <h1 class="title"> Skill Tracker </h1>
-    <form id=skill-container>
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username">
-        <input type="submit" value="Submit">
-    </form>
     <form id="create-skill-form">
         <div class="form-group">
             <label for="name-input"><p>Skill Name</p></label>
@@ -35,6 +30,7 @@
         </div>
         <input id='create-button' type="submit" name="submit" value="Add Skill" class="skill submit">
     </form>
-   
+    <div id=skill-container>
+    </div>
 </body>
 </html>

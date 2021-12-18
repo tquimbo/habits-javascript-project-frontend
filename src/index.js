@@ -18,9 +18,11 @@ function getSkill() {
   .then(response => response.json())
   .then(skill => {
     skill.data.forEach(skill => {
+      console.log(skill);
+
       let newSkill = new Skill(skill, skill.attributes)
     
-      document.querySelector('#skill-container').innerHTML += newSkill.renderNewCard()
+      document.querySelector('#skill-container').innerHTML += newSkill.renderSkillCard()
     })
   })
 }

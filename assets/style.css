@@ -1,83 +1,76 @@
 :root {
-    --bg-color: black;
-    --main-color: #ffa500;
-    --main-color-transparent: rgba(255, 166, 0, 0.459);
-    --header-font-family: 'Creepster', cursive;
-  }
+  --bg-color: black;
+  --main-color: #ffa500;
+  --main-color-transparent: rgba(255, 166, 0, 0.459);
+  --header-font-family: 'Creepster', cursive;
+}
 
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.show > {
+  font-size: 1.25em;
+  font-family: var(--header-font-family);
+  color: red;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+
+#skill-container {
+  background: #f9f9f9;
+  margin: 1em 1em 1em 2em;
+  width: 52em;
+  height: 32em;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-auto-rows: 5em;
+  max-width: 52em;
+}
+
+
+.number-of-listings {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
 .modal-content {
-    background-color: black;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid black;
-    border-radius: 1em;
-    width: 80%; /* Could be more or less, depending on screen size */
-  }
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
 
-  .container {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
-  }
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
 
-  .show > {
-    font-size: 1.25em;
-    font-family: var(--header-font-family);
-    color: red;
-    cursor: pointer;
-    text-decoration: underline;
-  }
-
-
-  #skill-container {
-    background: #f9f9f9;
-    margin: 1em 1em 1em 2em;
-    width: 52em;
-    height: 32em;
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    grid-auto-rows: 5em;
-    max-width: 52em;
-  }
-
-  .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: var(--main-color-transparent); /* Fallback color */
-  }
-  
-  /* Modal Content/Box */
-  .modal-content {
-    background-color: black;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid black;
-    border-radius: 1em;
-    width: 80%; /* Could be more or less, depending on screen size */
-  }
-  
-  /* The Close Button */
-  .close {
-    color: red;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  
-  .number-of-listings {
-    cursor: pointer;
-    text-decoration: underline;
-  }
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}

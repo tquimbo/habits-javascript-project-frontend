@@ -1,15 +1,19 @@
 const endPoint = "http://localhost:3000/api/v1/skills"
+const modal = new Modal()
 
 
 document.addEventListener('DOMContentLoaded', () => {
   getSkill()
  
-
   const createSkillForm = document.querySelector("#create-skill-form")
   createSkillForm.addEventListener("submit", (e) => skillFormHandler(e))
 
-  const createTaskForm = document.querySelector("#create-task-form")
-  createTaskForm.addEventListener("submit", (e) => taskFormHandler(e))
+  const addTask = document.querySelector("add-task-button")
+  addTask.addEventListener("click", modal.open)
+    
+
+  // const createTaskForm = document.querySelector("#create-task-form")
+  // createTaskForm.addEventListener("submit", (e) => taskFormHandler(e))
 
   // const submitTaskDescription = document.querySelector("#create-task-form")
   // submitTaskDescription.addEventListener("submit", (e) => taskFormHandler(e))

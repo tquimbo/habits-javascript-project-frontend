@@ -2,15 +2,19 @@ const endPoint = "http://localhost:3000/api/v1/skills"
 const modal = new Modal()
 
 
+
+
 document.addEventListener('DOMContentLoaded', () => {
   getSkill()
  
   const createSkillForm = document.querySelector("#create-skill-form")
   createSkillForm.addEventListener("submit", (e) => skillFormHandler(e))
 
-  const addTask = document.querySelector("add-task-button")
-  addTask.addEventListener("click", modal.open)
-    
+  // const addTask = document.querySelector("add-task-button")
+  // addTask.addEventListener("click", modal.open)
+
+  // const addTask = document.querySelector("add-task-button")
+  // addTask.addEventListener("click", (e) => taskFormHandler(e))
 
   // const createTaskForm = document.querySelector("#create-task-form")
   // createTaskForm.addEventListener("submit", (e) => taskFormHandler(e))
@@ -96,7 +100,4 @@ function postTask(description) {
 
   })
 }
-
-
-
 

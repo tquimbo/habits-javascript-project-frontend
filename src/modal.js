@@ -1,8 +1,11 @@
 class Modal{
 
     get modal(){
-        return document.querySelector("myModal")
+        return document.querySelector("#myModal")
     }
+
+    // var addTaskButton = document.getElementById('add-task-button');
+    // addTaskButton.addEventListener("sumbit", )
 
     open = () => {
         this.modal.style.display = "block"

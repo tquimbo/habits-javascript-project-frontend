@@ -15,13 +15,9 @@ class Skill{
               <h2>${this.name}</h2> 
               <img src=${this.image_url} height="100" width="150">
               <button id="add-task-button">Add Task</button> <br>
-              <button id="view-task-button">View Task</button> <br>
-              <button id="view-task-button">Edit Skill</button> <br>
-              <button id="delete-task-button">Delete Skill</button> <br>
-          
-              
-              
-            
+              <button id="view-tasks-button">View Tasks</button> <br>
+              <button id="edit-skill-button">Edit Skill</button> <br>
+              <button id="delete-skill-button">Delete Skill</button> <br>            
             </div>
 <div> 
 

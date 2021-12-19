@@ -14,7 +14,7 @@ class Skill{
             <div data-id=${this.id}>
               <h2>${this.name}</h2> 
               <img src=${this.image_url} height="100" width="150">
-              <button id="create-task-form"">Add Task</button>
+              <button id="add-task-button">Add Task</button>
               <button id="edit-skill">Edit Skill</button>
             </div>
             <br><br>`;

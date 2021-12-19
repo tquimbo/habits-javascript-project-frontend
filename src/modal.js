@@ -4,9 +4,19 @@ class Modal {
       this.addCloseEventListener()
     }
   
-    get modal(){
-      return document.querySelector("#myModal")
-    }
+    var addTaskButton = document.getElementById("add-task-button");
+
+    addTaskButton.onclick = function() {
+        modal.style.display = "block";
+      }
+
+    var modal = document.getElementById("myModal");
+
+      
+
+    // get modal(){
+    //   return document.querySelector("#myModal")
+    // }
   
     get main(){
       return document.getElementById("modal-main")

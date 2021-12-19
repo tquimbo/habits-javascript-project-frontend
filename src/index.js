@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const createTaskForm = document.querySelector("#create-task-form")
   createTaskForm.addEventListener("submit", (e) => taskFormHandler(e))
 
-  const submitTaskDescription = document.querySelector("#create-task-form")
-  submitTaskDescription.addEventListener("submit", (e) => taskFormHandler(e))
+  // const submitTaskDescription = document.querySelector("#create-task-form")
+  // submitTaskDescription.addEventListener("submit", (e) => taskFormHandler(e))
 
 });
 

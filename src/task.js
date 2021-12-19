@@ -11,12 +11,22 @@ class Task{
       }
 
       renderTaskCard() {
-        return `
-                <div data-id=${this.id}>
-                  <h2>${this.description}</h2> 
+        modal.open()
+        modal.main.innerHTML = ""
+        const taskList = document.createElement("ul")
+        modal.main.appendChild(taskList)
+        this.tasks.forEach(task => { taskList.innerHTML +=`<li>${task.data.description}</li>`
+         })
+        }
 
-                </div>
-                <br><br>`;
+       
+        // return `
+        
+        //         <div data-id=${this.id}>
+        //           <h2>${this.description}</h2> 
+
+        //         </div>
+        //         <br><br>`;
       }
     
 }

@@ -13,8 +13,8 @@ class Task{
 
         
       renderTaskCard() {
-        return `<div task-id="${this.id}">
-        <h2>${this.description}</h2> 
+        return `<div task-id="${this.id}" skill-id="${this.skill_id}">
+        <p>${this.description}</p> <input type="checkbox" id="description_checkbox" name="description_checkbox" value="description_checkbox">
     </div>`
 }
 

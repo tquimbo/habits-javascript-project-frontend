@@ -1,26 +1,21 @@
 const endPoint = "http://localhost:3000/api/v1/skills"
+const endPointT = "http://localhost:3000/api/v1/tasks"
 const modal = new Modal()
-
-
 
 
 document.addEventListener('DOMContentLoaded', () => {
   getSkill()
+  getTask()
  
-  const createSkillForm = document.querySelector("#create-skill-form")
+  const createSkillForm = document.querySelector("#create-skill-form");
   createSkillForm.addEventListener("submit", (e) => skillFormHandler(e))
 
-  // const addTask = document.querySelector("add-task-button")
-  // addTask.addEventListener("click", modal.open)
 
-  // const addTask = document.querySelector("add-task-button")
-  // addTask.addEventListener("click", (e) => taskFormHandler(e))
+var closeTask = document.getElementsByClassName("close")[0];
+closeTask.addEventListener("click", (e) => {modal.close()})
 
-  // const createTaskForm = document.querySelector("#create-task-form")
-  // createTaskForm.addEventListener("submit", (e) => taskFormHandler(e))
-
-  // const submitTaskDescription = document.querySelector("#create-task-form")
-  // submitTaskDescription.addEventListener("submit", (e) => taskFormHandler(e))
+const submitTask = document.querySelector("#create-task-form");
+submitTask.addEventListener("submit", (e) => taskFormHandler(e))
 
 });
 
@@ -63,15 +58,29 @@ function postSkill(name, image_url) {
   })
 }
 
+
+    // function newTaskForm(data){
+    //     let newTaskForm = document.getElementById('task-form-group')
+    //     newTaskForm.innerHTML += `
+    //     <form onsubmit="postTask(); return false;">
+    //             <label>Task Description: </label>
+    //                 <input id="description-input" placeholder="Description"></input>
+    //             <input type="hidden" id="${data}"></input>
+    //             <input type="submit" value="Create Task">
+    //     </form>
+    //     <br> `  
+    // }
+
+
 function getTask() {
-  fetch(endPoint)
+  fetch(endPointT)
   .then(response => response.json())
   .then(task => {
     task.data.forEach(task => {
 
       const newTask = new Task(task.id, task.attributes)
     
-      document.querySelector('#task-container').innerHTML += newTask.renderTaskCard()
+      document.querySelector('#task-container').innerHTML += newTask.renderTaskCard();
     })
   })
 }
@@ -87,7 +96,7 @@ postTask(descriptionInput)
 function postTask(description) {
   const bodyData = {description}
 
-  fetch(endPoint, {
+  fetch(endPointT, {
     method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify(bodyData)
@@ -101,3 +110,15 @@ function postTask(description) {
   })
 }
 
+var addTask = document.getElementById("add-task-button");
+addTask.onclick = modal.open()
+
+// renderTaskData = () => {
+//   modal.open()
+//   modal.main.innerHTML = ""
+//   const taskList = document.createElement("ul")
+//   modal.main.appendChild(taskList)
+//   this.tasks.forEach(task => {
+//     taskList.innerHTML += `<li>${task.data.description}</li>`
+//   })
+// }

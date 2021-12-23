@@ -17,11 +17,16 @@ class Skill{
               <button  onclick="modal.open()" id="add-task-button">Add Task</button> <br>
               <button class="view-tasks-button">View Tasks</button> <br>
               <button id="edit-skill-button">Edit Skill</button> <br>
-              <button id="delete-skill-button">Delete Skill</button> <br>            
+              <button id="delete-skill-button">Delete Skill</button> <br>  
+              <div style="position:relative;">
+              <img style="position:absolute; top:100 px; bottom: 100 px" >
+            </div>        
             </div>
-<div> 
 
-            <br><br>`;
+            <br>
+            <br>
+            <br>
+            <br>`;
             
   }
 

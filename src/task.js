@@ -11,10 +11,14 @@ class Task{
         return this.all.find(task => task.id === id);
       }
 
+      static findBySkillId(id) {
+        return this.all.find(skill => taskAttributes.skill_id === skill.id);
+      }
+
         
       renderTaskCard() {
         return `<div task-id="${this.id}" skill-id="${this.skill_id}">
-        <p>${this.description}</p> <input type="checkbox" id="description_checkbox" name="description_checkbox" value="description_checkbox">
+        <p>${this.description} <input type="checkbox" id="description_checkbox" name="description_checkbox" value="description_checkbox"></p>
     </div>`
 }
 

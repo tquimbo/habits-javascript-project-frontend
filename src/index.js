@@ -89,12 +89,14 @@ function taskFormHandler(e) {
   e.preventDefault()
 
 const descriptionInput = document.querySelector('#description-input').value;
-postTask(descriptionInput) 
+const skill_id = document.querySelector('#skill-container').getAttribute('id').value;
+// postTask(descriptionInput) 
+postTask(descriptionInput, skill_id) 
 
 }
 
-function postTask(description) {
-  const bodyData = {description}
+function postTask(description, skill_id ) {
+  const bodyData = {description, skill_id}
 
   fetch(endPointT, {
     method: "POST",
@@ -113,12 +115,5 @@ function postTask(description) {
 var addTask = document.getElementById("add-task-button");
 addTask.onclick = modal.open()
 
-// renderTaskData = () => {
-//   modal.open()
-//   modal.main.innerHTML = ""
-//   const taskList = document.createElement("ul")
-//   modal.main.appendChild(taskList)
-//   this.tasks.forEach(task => {
-//     taskList.innerHTML += `<li>${task.data.description}</li>`
-//   })
-// }
+
+

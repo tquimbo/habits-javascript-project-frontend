@@ -85,19 +85,28 @@ function getTask() {
   })
 }
 
+
+
 function taskFormHandler(e) {
   e.preventDefault()
 
 const descriptionInput = document.querySelector('#description-input').value;
-const skill_id = document.querySelector('#skill-container').getAttribute('id').value;
+// const skill_id = document.getElementById("skill-id")
+const skill_id = parseInt(document.querySelector('#skill-id').value);
+// const skill_id = document.querySelector('#skill-container').getAttribute('id').value;
+// const skill_id  = document.getElementById("skill-id");
+
+// const skill_id = document.querySelector('#skill-id').value;
+// const skill_container = document.querySelector('#skill_container');
+// let skill_id = skill_container.dataset.skill_id 
+// let skill_id = element.getAttribute(attributeName);
 // postTask(descriptionInput) 
 postTask(descriptionInput, skill_id) 
-
 }
 
-function postTask(description, skill_id ) {
+function postTask(description, skill_id) {
   const bodyData = {description, skill_id}
-
+  
   fetch(endPointT, {
     method: "POST",
     headers: {"Content-Type": "application/json"},
@@ -114,6 +123,13 @@ function postTask(description, skill_id ) {
 
 var addTask = document.getElementById("add-task-button");
 addTask.onclick = modal.open()
+// var skillID = addTask.parentElement.nodeName;
+// debugger
+// let skillID = addTask.parentElement.getAttribute('skill-id')
+
+   
 
 
 
+
+// document.getElementById("skill-id");

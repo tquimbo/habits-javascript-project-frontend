@@ -1,6 +1,6 @@
 class Skill{
   constructor(skill, skillAttributes) {
-    this.id = skill.id;
+    this.id = skill;
     this.name = skillAttributes.name;
     this.image_url = skillAttributes.image_url;
     this.level = skillAttributes.level;
@@ -9,9 +9,10 @@ class Skill{
   }
 
 
+
   renderSkillCard() {
     return `
-            <div data-id=${this.id}>
+            <div id="skill-id"=${this.id}>
               <h2>${this.name}</h2> 
               <img src=${this.image_url} height="100" width="150">
               <button  onclick="modal.open()" id="add-task-button">Add Task</button> <br>
@@ -22,10 +23,6 @@ class Skill{
               <img style="position:absolute; top:100 px; bottom: 100 px" >
             </div>        
             </div>
-
-            <br>
-            <br>
-            <br>
             <br>`;
             
   }
@@ -34,6 +31,9 @@ class Skill{
   static findById(id) {
     return this.all.find(skill => skill.id === id);
   }
+
+
+// const skill_id = Skill.all.find(skill => skill.id  === id);
 
 }
 

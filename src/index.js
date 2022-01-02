@@ -3,60 +3,60 @@ const endPointT = "http://localhost:3000/api/v1/tasks"
 const modal = new Modal()
 
 
-document.addEventListener('DOMContentLoaded', () => {
-  getSkill()
-  getTask()
- 
-  const createSkillForm = document.querySelector("#create-skill-form");
-  createSkillForm.addEventListener("submit", (e) => skillFormHandler(e))
-
-
-var closeTask = document.getElementsByClassName("close")[0];
-closeTask.addEventListener("click", (e) => {modal.close()})
-
-const submitTask = document.querySelector("#create-task-form");
-submitTask.addEventListener("submit", (e) => taskFormHandler(e))
-
-});
-
-function getSkill() {
-  fetch(endPoint)
-  .then(response => response.json())
-  .then(skill => {
-    skill.data.forEach(skill => {
-
-      const newSkill = new Skill(skill.id, skill.attributes)
+    document.addEventListener('DOMContentLoaded', () => {
+      getSkill()
+      getTask()
     
-      document.querySelector('#skill-container').innerHTML += newSkill.renderSkillCard()
-    })
-  })
-}
+      const createSkillForm = document.querySelector("#create-skill-form");
+      createSkillForm.addEventListener("submit", (e) => skillFormHandler(e))
 
-function skillFormHandler(e) {
-  e.preventDefault()
 
-const nameInput = document.querySelector('#name-input').value;
-const imageInput = document.querySelector('#image-input').value;
-postSkill(nameInput, imageInput) 
+    var closeTask = document.getElementsByClassName("close")[0];
+    closeTask.addEventListener("click", (e) => {modal.close()})
+    
 
-}
+    const submitTask = document.querySelector("#create-task-form");
+    submitTask.addEventListener("submit", (e) => taskFormHandler(e))
 
-function postSkill(name, image_url) {
-  const bodyData = {name, image_url}
+    });
 
-  fetch(endPoint, {
-    method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify(bodyData)
-  })
-  .then(response => response.json())
-  .then(skill => {
+    function getSkill() {
+      fetch(endPoint)
+      .then(response => response.json())
+      .then(skill => {
+        skill.data.forEach(skill => {
 
-    const newSkill = new Skill(skill.data.id, skill.data.attributes)
-    document.querySelector('#skill-container').innerHTML += newSkill.renderSkillCard();
+          const newSkill = new Skill(skill.id, skill.attributes)
+        
+          document.querySelector('#skill-container').innerHTML += newSkill.renderSkillCard()
+        })
+      })
+    }
 
-  })
-}
+    function skillFormHandler(e) {
+      e.preventDefault()
+
+    const nameInput = document.querySelector('#name-input').value;
+    const imageInput = document.querySelector('#image-input').value;
+    postSkill(nameInput, imageInput) 
+    }
+
+    function postSkill(name, image_url) {
+      const bodyData = {name, image_url}
+
+      fetch(endPoint, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(bodyData)
+      })
+      .then(response => response.json())
+      .then(skill => {
+
+        const newSkill = new Skill(skill.data.id, skill.data.attributes)
+        document.querySelector('#skill-container').innerHTML += newSkill.renderSkillCard();
+
+      })
+    }
 
 
     // function newTaskForm(data){
@@ -72,57 +72,64 @@ function postSkill(name, image_url) {
     // }
 
 
-function getTask() {
-  fetch(endPointT)
-  .then(response => response.json())
-  .then(task => {
-    task.data.forEach(task => {
+    function getTask() {
+      fetch(endPointT)
+      .then(response => response.json())
+      .then(task => {
+        task.data.forEach(task => {
 
-      const newTask = new Task(task.id, task.attributes)
-    
-      document.querySelector('#task-container').innerHTML += newTask.renderTaskCard();
-    })
-  })
-}
+          const newTask = new Task(task.id, task.attributes)
+        
+          document.querySelector('#task-container').innerHTML += newTask.renderTaskCard();
+        })
+      })
+    }
 
 
 
-function taskFormHandler(e) {
-  e.preventDefault()
+    function taskFormHandler(e) {
+      e.preventDefault()
 
-const descriptionInput = document.querySelector('#description-input').value;
-// const skill_id = document.getElementById("skill-id")
-const skill_id = parseInt(document.querySelector('#skill-id').value);
-// const skill_id = document.querySelector('#skill-container').getAttribute('id').value;
-// const skill_id  = document.getElementById("skill-id");
+    const descriptionInput = document.querySelector('#description-input').value;
+    const skill_id = document.getElementById("add-task-button").parentElement.getAttribute('value');
+    // const skill_id = document.getElementById("add-task-button").onclick.target.parentElement.getAttribute('value');
+    // const skill_id = document.querySelector(".skill-id").getAttribute('value')
+    // addTask.addEventListener("click", (e) => skill_id);
+    // let skill_id = addTaskHandler.parentElement.getAttribute('value').value;
+    // const skill_id  = findById(id);
+    // debugger
+    // const skill_id = document.getElementById("skill-id")
+    // const skill_id = findById(id)
+    // const skill_id = document.querySelector('#skill-id').getAttributeNode('id');
 
-// const skill_id = document.querySelector('#skill-id').value;
-// const skill_container = document.querySelector('#skill_container');
-// let skill_id = skill_container.dataset.skill_id 
-// let skill_id = element.getAttribute(attributeName);
-// postTask(descriptionInput) 
-postTask(descriptionInput, skill_id) 
-}
+      // const skill_id = document.getElementsByClassName('skill-id').getAttributeNode('value');
 
-function postTask(description, skill_id) {
-  const bodyData = {description, skill_id}
-  
-  fetch(endPointT, {
-    method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify(bodyData)
-  })
-  .then(response => response.json())
-  .then(task => {
 
-    const newTask = new Task(task.data.id, task.data.attributes)
-    document.querySelector('#task-container').innerHTML += newTask.renderTaskCard();
+    postTask(descriptionInput, skill_id) 
+    }
 
-  })
-}
+    function postTask(description, skill_id) {
+      const bodyData = {description, skill_id}
+      
+      fetch(endPointT, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(bodyData)
+      })
+      .then(response => response.json())
+      .then(task => {
 
-var addTask = document.getElementById("add-task-button");
-addTask.onclick = modal.open()
+        const newTask = new Task(task.data.id, task.data.attributes)
+        document.querySelector('#task-container').innerHTML += newTask.renderTaskCard();
+
+      })
+    }
+
+// var addTask = document.getElementById("add-task-button");
+// addTask.onclick = modal.open()
+// var addTaskButton = document.querySelector("add-task-button");
+// addTaskButton.addEventListener("click", (e) => {modal.open()})
+
 // var skillID = addTask.parentElement.nodeName;
 // debugger
 // let skillID = addTask.parentElement.getAttribute('skill-id')

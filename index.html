@@ -28,19 +28,15 @@
         </div>
 
         <input id='create-button' type="submit" name="submit" value="Add Skill" class="skill-submit">
-        <input type="hidden" id="skill-id"></input>
+        <!-- <input type="hidden" id="skill-id"></input> -->
     </form>
 
     
     <div id=skill-container>
 
     </div>
- 
-
-
    
     <!-- Trigger/Open The Modal -->
-
 
 <!-- The Modal -->
 <div id="myModal" class="modal">
@@ -48,14 +44,15 @@
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
-    <form id="create-task-form">
+    <form class="create-task-form" id="create-task-form">
         <div class="task-form-group">
             <label for="description-input"><p>Description</p></label>
             <input type="text" class="form-control" value = "" id="description-input">
+            <input type="hidden" class="form-control" id="skill-id-input">
             <input id='submit-task-button' type="submit" name="submit" value="Submit Task." class="task-submit">
     </form> 
     <div id="main"></div>
-    <div id="task-container">  </div>
+    <div class="skill-id" id="task-container">  </div>
     </div>
   </div>
 

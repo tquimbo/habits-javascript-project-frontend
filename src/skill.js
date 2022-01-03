@@ -19,23 +19,35 @@ class Skill{
   // let element = document.querySelector("#add-task-button")[0];
   // let id = element.id;
 
-  function reply_click(clicked_id)
-  {
-      alert(clicked_id);
-  }
+  // function reply_click(clicked_id)
+  // {
+  //     alert(clicked_id);
+  // }
+
+  // submitTask() {
 
 
+    
+
+    
+
+    
+  // }
+
+
+  
 
 
 
   renderSkillCard() {
 
 
+
     return `
             <div class=skill-id value=${this.id}>
               <h2>${this.name}</h2> 
               <img src=${this.image_url} height="100" width="150">
-              <button onclick="reply_click(this.id)" class="add-task-button" id=${this.id} >Add Task</button> <br>
+              <button onclick="modal.open()" class="add-task-button" id=${this.id}  >Add Task</button> <br>
               <button class="view-tasks-button">View Tasks</button> <br>
               <button id="edit-skill-button">Edit Skill</button> <br>
               <button id="delete-skill-button">Delete Skill</button> <br>  

@@ -1,6 +1,7 @@
 const endPoint = "http://localhost:3000/api/v1/skills"
 const endPointT = "http://localhost:3000/api/v1/tasks"
 const modal = new Modal()
+// const skillID = document.getElementById(`${Skill.id}`).value;
 
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -13,11 +14,11 @@ const modal = new Modal()
 
     var closeTask = document.getElementsByClassName("close")[0];
     closeTask.addEventListener("click", (e) => {modal.close()})
-    
 
-    const submitTask = document.querySelector("#create-task-form");
+
+    let submitTask = document.querySelector("#create-task-form");
     submitTask.addEventListener("submit", (e) => taskFormHandler(e))
-
+    
     });
 
     function getSkill() {
@@ -85,13 +86,26 @@ const modal = new Modal()
       })
     }
 
+    // function taskEventListeners(e){
+
+    //   let buttonID = document.getElementById(`button${Skill.id}`);
+      
+
+    
+    // let submitTask = document.querySelector("#create-task-form");
+    // submitTask.addEventListener("submit", (e) => taskFormHandler(e))
+
+    // }
+
 
 
     function taskFormHandler(e) {
       e.preventDefault()
 
     const descriptionInput = document.querySelector('#description-input').value;
-    const skill_id = document.getElementById("add-task-button").parentElement.getAttribute('value');
+    const skill = document.getElementById(`${Skill.id}`).value;
+  
+    // const skill_id = document.getElementById("add-task-button").parentElement.getAttribute('value');
     // const skill_id = document.getElementById("add-task-button").onclick.target.parentElement.getAttribute('value');
     // const skill_id = document.querySelector(".skill-id").getAttribute('value')
     // addTask.addEventListener("click", (e) => skill_id);
@@ -105,11 +119,11 @@ const modal = new Modal()
       // const skill_id = document.getElementsByClassName('skill-id').getAttributeNode('value');
 
 
-    postTask(descriptionInput, skill_id) 
+    postTask(descriptionInput, skill) 
     }
 
-    function postTask(description, skill_id) {
-      const bodyData = {description, skill_id}
+    function postTask(description, skill) {
+      const bodyData = {description, skill}
       
       fetch(endPointT, {
         method: "POST",
@@ -125,6 +139,8 @@ const modal = new Modal()
       })
     }
 
+
+    
 // var addTask = document.getElementById("add-task-button");
 // addTask.onclick = modal.open()
 // var addTaskButton = document.querySelector("add-task-button");
